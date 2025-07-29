@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phone Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input {
+      display: block;
+      margin-bottom: 15px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form onsubmit="login(event)">
+    <h2>Login</h2>
+    <input type="tel" id="phone" placeholder="Phone Number" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+    <div id="error" class="error"></div>
+  </form>
+
+  <script>
+    // Simulated stored credentials
+    const storedPhone = "0912345678";
+    const storedPassword = "mySecret123";
+
+    function login(event) {
+      event.preventDefault();
+
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error');
+
+      if (phone === storedPhone && password === storedPassword) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // Simulated redirect
+      } else {
+        errorDiv.textContent = "Invalid phone number or password.";
+      }
+    }
+  </script>
+</body>
+</html>
