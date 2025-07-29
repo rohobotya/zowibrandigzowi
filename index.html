@@ -2,86 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zowi Branding And Promotion Company</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Phone Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input {
+      display: block;
+      margin-bottom: 15px;
+      padding: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Zowi Branding And Promotion Company</h1>
-    <p>Empowering Businesses & Talent in Ethiopia</p>
-  </header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="referral.html">Referral Program</a>
-    <a href="apply.html">Apply</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <main>
-    <section>
-      <h2>Vision</h2>
-      <p>
-        Zowi Branding envisions becoming the leading agency for human resource development and sales promotion in Ethiopia, empowering organizations with high-quality talent and providing customers with outstanding products and services. We aim to create a dynamic marketplace that fosters long-term partnerships and drives sustainable growth for both employees and employers.
-      </p>
-    </section>
-    <section>
-      <h2>Mission</h2>
-      <p>
-        Zowi Branding is committed to recruiting, training, and supporting both employees and employers to ensure the acquisition of skilled, adaptable, and high-performing human resources. By enhancing candidate profiles and promoting micro-merchandise sales, we aim to bridge the gap between quality talent and organizational needs while delivering exceptional customer service and value.
-      </p>
-    </section>
-    <section>
-      <h2>Description of Work</h2>
-      <ul>
-        <li>Zowi Branding operates as an integrated agency focused on human resource management and product promotion.</li>
-        <li>Promote the announcement of any company via social media.</li>
-        <li>We specialize in recruiting and training talented individuals, providing ongoing support to both employers and employees.</li>
-        <li>Our work also extends to enhancing candidate applications and resumes, ensuring that job seekers are prepared and competitive in the job market.</li>
-        <li>We promote and work closely with suppliers to offer high-quality products to customers.</li>
-        <li>Our customer service and sales promotion efforts aim to ensure satisfaction and drive business growth through outstanding service delivery.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Strategy</h2>
-      <p>
-        Zowi Branding employs a strategic approach to develop and deploy talent and products. Our recruitment strategy focuses on identifying qualified candidates, offering comprehensive training to enhance their skills, and providing them with growth opportunities within organizations. For employers, we ensure access to a pool of well-trained and qualified candidates, enabling them to build high-performing teams. On the sales side, we focus on promoting micro-merchandise through strong partnerships with suppliers, ensuring that products meet customer needs and are competitively priced. Our customer service strategy ensures that both employees and customers receive the highest level of support, fostering loyalty and long-term relationships.
-      </p>
-    </section>
-    <section>
-      <h2>Structure of Work</h2>
-      <p>
-        Zowi Branding operates under a structured model that divides its work into key functional areas: employee recruitment and training, candidate application improvement, micro-merchandise promotion, and customer service. We work closely with both employers and employees, ensuring smooth coordination between recruitment, product sales, and customer satisfaction efforts. Our team is dedicated to maintaining high standards in every aspect of our operations, from candidate sourcing to customer interactions, ensuring that all parties benefit from our services.
-      </p>
-    </section>
-    <section>
-      <h2>Revenue Share and Compensation</h2>
-      <ul>
-        <li>Zowi Branding’s revenue-sharing model is designed depending on Referals provided, with clear incentives for top performers.</li>
-        <li>Referral Program: For each successful referral, representatives earn 99 Birr. Additional bonuses are awarded for reaching milestones such as 100, 500, or 1000 referrals.</li>
-        <li>Milestones:
-          <ul>
-            <li>100 referrals = 1-month unlimited data package</li>
-            <li>500 referrals = yearly unlimited data package</li>
-            <li>1000 referrals = Samsung Galaxy Ultra 21</li>
-          </ul>
-        </li>
-      </ul>
-    </section>
-    <section>
-      <h2>Apply Now</h2>
-      <p>
-        <a class="button" href="apply.html">Apply Online</a>
-      </p>
-    </section>
-    <section>
-      <h2>Join Our Telegram Channel</h2>
-      <p>
-        <a class="button" href="https://t.me/+R3M51a1DREAwOTY0" target="_blank">Join Telegram</a>
-      </p>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Zowi Branding. All rights reserved.</p>
-  </footer>
+  <form onsubmit="login(event)">
+    <h2>Login</h2>
+    <input type="tel" id="phone" placeholder="Phone Number" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+    <div id="error" class="error"></div>
+  </form>
+
+  <script>
+    // Simulated stored credentials
+    const storedPhone = "0912345678";
+    const storedPassword = "mySecret123";
+
+    function login(event) {
+      event.preventDefault();
+
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error');
+
+      if (phone === storedPhone && password === storedPassword) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html"; // Simulated redirect
+      } else {
+        errorDiv.textContent = "Invalid phone number or password.";
+      }
+    }
+  </script>
 </body>
 </html>
