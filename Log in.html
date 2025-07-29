@@ -1,6 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  let registeredPhone = "";
+    let registeredPassword = "";
+
+    function toggleForms() {
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+      registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
+      document.getElementById("error").textContent = "";
+    }
+
+    function register(event) {
+      event.preventDefault();
+      const phone = document.getElementById("regPhone").value;
+      const password = document.getElementById("regPassword").value;
+
+      registeredPhone = phone;
+      registeredPassword = password;
+
+      alert("Registration successful! You can now login.");
+      toggleForms();
+    }
+
+    function login(event) {
+      event.preventDefault();
+
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error');
+
+      if (phone === registeredPhone && password === registeredPassword) {
+        alert("Login successful!");
+        window.location.href = "dashboard.html";
+      } else {
+        errorDiv.textContent = "Invalid phone number or password.";
+      }
+    }
+  </script>
+</body>
+</html>
   <meta charset="UTF-8">
   <title>Phone Login</title>
   <style>
@@ -72,7 +112,6 @@
   </div>
 
   <script>
-    // Temporary in-memory storage for demo purposes
     let registeredPhone = "";
     let registeredPassword = "";
 
