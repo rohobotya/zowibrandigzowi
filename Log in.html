@@ -12,7 +12,7 @@
       align-items: center;
       height: 100vh;
     }
-    form {
+    .container {
       background: #fff;
       padding: 20px;
       border-radius: 10px;
@@ -34,6 +34,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      width: 100%;
     }
     button:hover {
       background: #0056b3;
@@ -42,21 +43,58 @@
       color: red;
       margin-top: 10px;
     }
+    .toggle-link {
+      text-align: center;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #007bff;
+    }
   </style>
 </head>
 <body>
-  <form onsubmit="login(event)">
-    <h2>Login</h2>
-    <input type="tel" id="phone" placeholder="Phone Number" required />
-    <input type="password" id="password" placeholder="Password" required />
-    <button type="submit">Login</button>
-    <div id="error" class="error"></div>
-  </form>
+  <div class="container">
+    <form id="registerForm" onsubmit="register(event)" style="display: none;">
+      <h2>Register</h2>
+      <input type="tel" id="regPhone" placeholder="Phone Number" required />
+      <input type="password" id="regPassword" placeholder="Password" required />
+      <button type="submit">Register</button>
+      <div class="toggle-link" onclick="toggleForms()">Already have an account? Login</div>
+    </form>
+
+    <form id="loginForm" onsubmit="login(event)">
+      <h2>Login</h2>
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <div id="error" class="error"></div>
+      <div class="toggle-link" onclick="toggleForms()">Don't have an account? Register</div>
+    </form>
+  </div>
 
   <script>
-    // Simulated stored credentials
-    const storedPhone = "0912345678";
-    const storedPassword = "mySecret123";
+    // Temporary in-memory storage for demo purposes
+    let registeredPhone = "";
+    let registeredPassword = "";
+
+    function toggleForms() {
+      const loginForm = document.getElementById("loginForm");
+      const registerForm = document.getElementById("registerForm");
+      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+      registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
+      document.getElementById("error").textContent = "";
+    }
+
+    function register(event) {
+      event.preventDefault();
+      const phone = document.getElementById("regPhone").value;
+      const password = document.getElementById("regPassword").value;
+
+      registeredPhone = phone;
+      registeredPassword = password;
+
+      alert("Registration successful! You can now login.");
+      toggleForms();
+    }
 
     function login(event) {
       event.preventDefault();
@@ -65,9 +103,9 @@
       const password = document.getElementById('password').value;
       const errorDiv = document.getElementById('error');
 
-      if (phone === storedPhone && password === storedPassword) {
+      if (phone === registeredPhone && password === registeredPassword) {
         alert("Login successful!");
-        window.location.href = "dashboard.html"; // Simulated redirect
+        window.location.href = "dashboard.html";
       } else {
         errorDiv.textContent = "Invalid phone number or password.";
       }
